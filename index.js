@@ -1,8 +1,17 @@
 const TelegramApi = require('node-telegram-bot-api');
-const {botOptions} =require('./options');
+
 const token = '1423864221:AAGC7hWBSq_o3CM8MW4lKzMXSPRUd3k2-h0';
 
 const bot = new TelegramApi(token, {polling: true});
+
+const botOptions = {
+  reply_markup: JSON.stringify({
+    inline_keyboard: [
+      [{text: 'Murojaat qoldirish', callback_data: "murojaat"}],
+      [{text: 'Tariflar bilan tanishish', callback_data: "tariflar"}],
+    ]
+  })
+}
 
 const start = () => {
   bot.setMyCommands([
